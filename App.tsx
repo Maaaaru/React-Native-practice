@@ -29,72 +29,25 @@ import {
   ReloadInstructions
 } from 'react-native/Libraries/NewAppScreen';
 
+import loading from './src/loading';
+import SignUp from './src/signup';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 declare var global: {HermesInternal: null | {}};
 
+const Stack = createStackNavigator();
+
 const App = () => {
-  const [state, setState] = useState(0);
   return (
-      <View style={style.position}>
-        <TextInput style={style.text1} placeholder="e-mail Here" />
-        <TextInput style={style.text2} placeholder="Password Here" />
-        <Text>{state}</Text>
-        <View style={style.conf}>
-          <View style={style.button1}>
-            <Button
-              color='white'
-              title="+100"
-              onPress={() => setState(state + 100)}
-            />
-          </View>
-          <View style={style.button2}>
-            <Button
-            color='white'
-              title='+200'
-              onPress={() => setState(state + 200)}
-            />
-          </View>
-        </View>
-      </View>
-  
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false}} />
+        <Stack.Screen name="Loding" component={loading} options={{headerShown: false}} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
-
-const style = StyleSheet.create({
-  position: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#080808',
-    borderStyle: 'solid',
-    borderColor: 'black'
-  },
-  text1: {
-    height: 40,
-    fontSize: 20,
-    marginTop: 120,
-    color: '#080808'
-  },
-  text2: {
-    height: 40,
-    fontSize: 20,
-    marginTop: 10
-  },
-  conf: {
-    flexDirection: 'row',
-    marginTop: 20,
-  },
-  button1: {
-    height: 40,
-    width: 130,
-    backgroundColor: '#cc4848',
-    alignItems: 'center',
-  },
-  button2: {
-    marginLeft: 10,
-    height: 40,
-    width: 130,
-    backgroundColor: '#cc4848',
-    alignItems: 'center',
-  }
-});
 
 export default App;

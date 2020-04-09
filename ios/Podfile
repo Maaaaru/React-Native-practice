@@ -20,16 +20,14 @@ def flipper_post_install(installer)
     end
   end
 
-  post_install do |installer|
-    installer.pods_project.build_configurations.each do |config|
-      if config.name.include?("Debug")
-        # Set optimization level for project
-        config.build_settings['GCC_OPTIMIZATION_LEVEL'] = '0'
-  
-        # Add DEBUG to custom configurations containing 'Debug'
-        if !config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'].include? 'DEBUG=1'
-          config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'DEBUG=1'
-        end
+  installer.pods_project.build_configurations.each do |config|
+    if config.name.include?("Debug")
+      # Set optimization level for project
+      config.build_settings['GCC_OPTIMIZATION_LEVEL'] = '0'
+
+      # Add DEBUG to custom configurations containing 'Debug'
+      if !config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'].include? 'DEBUG=1'
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'DEBUG=1'
       end
     end
   end
@@ -67,6 +65,8 @@ target 'AwesomeTSProject' do
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
+
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
   target 'AwesomeTSProjectTests' do
     inherit! :complete
