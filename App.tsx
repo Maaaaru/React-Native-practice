@@ -8,7 +8,7 @@
  * @format
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -16,6 +16,9 @@ import {
   View,
   Text,
   StatusBar,
+  TextInput,
+  Button,
+  Alert
 } from 'react-native';
 
 import {
@@ -23,96 +26,80 @@ import {
   LearnMoreLinks,
   Colors,
   DebugInstructions,
-  ReloadInstructions,
+  ReloadInstructions
 } from 'react-native/Libraries/NewAppScreen';
 
 declare var global: {HermesInternal: null | {}};
 
 const App = () => {
+  const [state, setState] = useState(0);
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change
-                this screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
+      <View style={style.position}>
+        <TextInput style={style.text1} placeholder="e-mail Here" />
+        <TextInput style={style.text2} placeholder="Password Here" />
+        <Text>{state}</Text>
+        <View style={style.conf}>
+          <View style={style.button1}>
+            <Button
+              color='white'
+              title="+100"
+              onPress={() => setState(state + 100)}
+            />
           </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+          <View style={style.button2}>
+            <Button
+              title='+200'
+              onPress={() => setState(state + 200)}
+            />
+          </View>
+        </View>
+      </View>
+  
   );
 };
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+const style = StyleSheet.create({
+  position: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#080808',
+    borderStyle: 'solid',
+    borderColor: 'black'
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  text1: {
+    height: 40,
+    fontSize: 20,
+    marginTop: 120,
+    color: '#080808'
   },
-  body: {
-    backgroundColor: Colors.white,
+  text2: {
+    height: 40,
+    fontSize: 20,
+    marginTop: 10
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  conf: {
+    flexDirection: 'row',
+    marginTop: 20,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#080818'
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
+  button1: {
+    height: 40,
+    width: 130,
+    backgroundColor: '#cc4848',
+    alignItems: 'center',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
+  button2: {
+    marginLeft: 10,
+    height: 40,
+    width: 130,
+    backgroundColor: '#cc4848',
+    alignItems: 'center',
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderColor: '#999111'
+  }
 });
 
 export default App;
