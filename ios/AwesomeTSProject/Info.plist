@@ -53,5 +53,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>Env</key>
+	<string>${ENV}</string>
 </dict>
 </plist>

@@ -48,6 +48,7 @@ const App = () => {
           </View>
           <View style={style.button2}>
             <Button
+            color='white'
               title='+200'
               onPress={() => setState(state + 200)}
             />
@@ -80,9 +81,6 @@ const style = StyleSheet.create({
   conf: {
     flexDirection: 'row',
     marginTop: 20,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: '#080818'
   },
   button1: {
     height: 40,
@@ -96,9 +94,6 @@ const style = StyleSheet.create({
     width: 130,
     backgroundColor: '#cc4848',
     alignItems: 'center',
-    borderStyle: 'solid',
-    borderWidth: 2,
-    borderColor: '#999111'
   }
 });
 

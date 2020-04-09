@@ -125,16 +125,19 @@ android {
   flavorDimensions "env"
   productFlavors {
     dev {
-        dimension "env"
-        applicationId "AwesomeTSProject.dev"
+      dimension "env"
+      applicationId "AwesomeTSProject.dev"
+      buildConfigField "String", "ENV", "\"dev\"" 
     }
     stg {
-        dimension "env"
-        applicationId "AwesomeTSProject.stg"
+      dimension "env"
+      applicationId "AwesomeTSProject.stg"
+      buildConfigField "String", "ENV", "\"stg\"" 
     }
     prd {
-        dimension "env"
-        applicationId "AwesomeTSProject"
+      dimension "env"
+      applicationId "AwesomeTSProject"
+      buildConfigField "String", "ENV", "\"prd\"" 
     }
   }
     compileSdkVersion rootProject.ext.compileSdkVersion
